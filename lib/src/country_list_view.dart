@@ -76,6 +76,7 @@ class _CountryListViewState extends State<CountryListView> {
 
   @override
   Widget build(BuildContext context) {
+    bool keyboardactive = MediaQuery.of(context).viewInsets.bottom>10;
     final String searchLabel =
         CountryLocalizations.of(context)?.countryName(countryCode: 'search') ??
             'Search';
@@ -86,19 +87,18 @@ class _CountryListViewState extends State<CountryListView> {
 
     return Column(
       children: <Widget>[
-        const SizedBox(height: 70),
-        Container(
-          height: 48,
-          child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 10),
+          SizedBox(height: keyboardactive?60:30),
+        Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 10),
+          child: Container(
+            height: 48,
             child: TextField(
               textAlign: TextAlign.left,
               textAlignVertical: TextAlignVertical.center,
               controller: _searchController,
               decoration: InputDecoration(
 
-                labelText: searchLabel,
-                hintText: searchLabel,
+                 hintText: searchLabel,
                 prefixIcon: const Icon(Icons.search),
                 border: border,
                 enabledBorder: border,
