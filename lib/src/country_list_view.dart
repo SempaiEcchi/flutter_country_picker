@@ -80,6 +80,10 @@ class _CountryListViewState extends State<CountryListView> {
         CountryLocalizations.of(context)?.countryName(countryCode: 'search') ??
             'Search';
 
+    var border = const OutlineInputBorder(
+        borderRadius: BorderRadius.all(Radius.circular(50.0)),
+        borderSide: BorderSide(color: Color(0xff40000000), width: 0.8));
+
     return Column(
       children: <Widget>[
         const SizedBox(height: 12),
@@ -91,11 +95,11 @@ class _CountryListViewState extends State<CountryListView> {
               labelText: searchLabel,
               hintText: searchLabel,
               prefixIcon: const Icon(Icons.search),
-              border: OutlineInputBorder(
-                borderSide: BorderSide(
-                  color: const Color(0xFF8C98A8).withOpacity(0.2),
-                ),
-              ),
+              border: border,
+              enabledBorder: border,
+              disabledBorder: border,
+              errorBorder: border,
+              focusedBorder: border,
             ),
             onChanged: _filterSearchResults,
           ),
