@@ -86,11 +86,11 @@ class _CountryListViewState extends State<CountryListView> {
 
     return Column(
       children: <Widget>[
-        const SizedBox(height: 12),
-        Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 10),
-          child: Container(
-            height: 48,
+        const SizedBox(height: 70),
+        Container(
+          height: 48,
+          child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 10),
             child: TextField(
               textAlign: TextAlign.left,
               textAlignVertical: TextAlignVertical.center,
