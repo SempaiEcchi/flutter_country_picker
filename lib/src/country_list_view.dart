@@ -89,7 +89,7 @@ class _CountryListViewState extends State<CountryListView> {
       children: <Widget>[
           SizedBox(height: keyboardactive?60:30),
         Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 10),
+          padding: const EdgeInsets.symmetric(horizontal: 8),
           child: Container(
             height: 48,
             child: TextField(
