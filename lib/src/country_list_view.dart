@@ -89,19 +89,25 @@ class _CountryListViewState extends State<CountryListView> {
         const SizedBox(height: 12),
         Padding(
           padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 10),
-          child: TextField(
-            controller: _searchController,
-            decoration: InputDecoration(
-              labelText: searchLabel,
-              hintText: searchLabel,
-              prefixIcon: const Icon(Icons.search),
-              border: border,
-              enabledBorder: border,
-              disabledBorder: border,
-              errorBorder: border,
-              focusedBorder: border,
+          child: Container(
+            height: 48,
+            child: TextField(
+              textAlign: TextAlign.left,
+              textAlignVertical: TextAlignVertical.center,
+              controller: _searchController,
+              decoration: InputDecoration(
+
+                labelText: searchLabel,
+                hintText: searchLabel,
+                prefixIcon: const Icon(Icons.search),
+                border: border,
+                enabledBorder: border,
+                disabledBorder: border,
+                errorBorder: border,
+                focusedBorder: border,
+              ),
+              onChanged: _filterSearchResults,
             ),
-            onChanged: _filterSearchResults,
           ),
         ),
         Expanded(
