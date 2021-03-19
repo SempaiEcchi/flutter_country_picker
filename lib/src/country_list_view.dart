@@ -76,39 +76,42 @@ class _CountryListViewState extends State<CountryListView> {
 
   @override
   Widget build(BuildContext context) {
-    bool keyboardactive = MediaQuery.of(context).viewInsets.bottom>10;
+    bool keyboardactive = MediaQuery.of(context).viewInsets.bottom > 10;
     final String searchLabel =
         CountryLocalizations.of(context)?.countryName(countryCode: 'search') ??
             'Search';
 
-    var border = const OutlineInputBorder(
+    var greyBorder = const OutlineInputBorder(
         borderRadius: BorderRadius.all(Radius.circular(50.0)),
         borderSide: BorderSide(color: Color(0xff40000000), width: 0.8));
 
     return Column(
       children: <Widget>[
-          SizedBox(height: keyboardactive?60:30),
-        Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 8),
-          child: Container(
-            height: 48,
-            child: TextField(
-              textAlign: TextAlign.left,
-              textAlignVertical: TextAlignVertical.center,
-              controller: _searchController,
-              decoration: InputDecoration(
-
-                 hintText: searchLabel,
-                prefixIcon: const Icon(Icons.search),
-                border: border,
-                enabledBorder: border,
-                disabledBorder: border,
-                errorBorder: border,
-                focusedBorder: border,
+        SizedBox(height: keyboardactive ? 60 : 30),
+        Row(
+          children: [
+            Flexible(
+                child: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 8.0),
+              child: Container(
+                height: 48,
+                child: TextField(
+                  onChanged: _filterSearchResults,
+                  textAlignVertical: TextAlignVertical.bottom,
+                  controller: _searchController,
+                  decoration: InputDecoration(
+                    prefixIcon: const Icon(Icons.search),
+                    border: greyBorder,
+                    focusedBorder: greyBorder,
+                    enabledBorder: greyBorder,
+                    errorBorder: greyBorder,
+                    disabledBorder: greyBorder,
+                    hintText: searchLabel,
+                  ),
+                ),
               ),
-              onChanged: _filterSearchResults,
-            ),
-          ),
+            )),
+          ],
         ),
         Expanded(
           child: ListView(
